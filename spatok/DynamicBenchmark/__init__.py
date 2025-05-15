@@ -2,4 +2,4 @@ import os
 import pdb
 import warnings
 
-from spatok.DynamicBenchmark.Simple.DynamicSampler import DynamicSampler
+from spatok.DynamicSampler import DynamicSampler

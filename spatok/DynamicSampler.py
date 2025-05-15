@@ -98,6 +98,10 @@ class DynamicSampler:
     
 
 if __name__ == "__main__":
+
+    from spatok.test.test_simple_dynamic_sampler import run_test
+    run_test()
+
     sampler = DynamicSampler()
     image, label = sampler.sample(1)
     print(image.shape)
