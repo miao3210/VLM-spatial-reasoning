@@ -1,4 +1,4 @@
-from dynamic_sampler import DynamicSampler
+from spatok.DynamicBenchmark import DynamicSampler
 import matplotlib.pyplot as plt
 import cv2
 import json

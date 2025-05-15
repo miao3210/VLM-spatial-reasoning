@@ -1,0 +1,8 @@
+setup.py
+spatok/__init__.py
+spatok.egg-info/PKG-INFO
+spatok.egg-info/SOURCES.txt
+spatok.egg-info/dependency_links.txt
+spatok.egg-info/requires.txt
+spatok.egg-info/top_level.txt
+spatok/DynamicBenchmark/__init__.py
