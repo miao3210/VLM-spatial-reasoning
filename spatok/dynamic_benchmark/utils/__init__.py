@@ -1,0 +1,1 @@
+from spatok.dynamic_benchmark.utils.label_utils import *

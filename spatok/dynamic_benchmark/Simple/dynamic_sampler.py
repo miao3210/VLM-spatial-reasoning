@@ -33,8 +33,36 @@ class DynamicSampler:
 
     def _sample_object_size(self):
         return random.choice(self.object_size_range)
+    
+    def _get_label(self, TODO):
+        '''
+        Una please help
+        get the relative position of each pair of objects and edges
+        some old functions may be useful and they are in the utils/label_utils.py
+        '''
+        TODO 
 
     def _sample_image(self, size, num_edges, num_objects):
+        '''
+        Don't delete this function desc.
+        This function generate a random image and its label.
+        image:
+        The image has the given size, number of edges and number of objects.
+        cv2 use BGR color space as default, when save the image, it will be converted to RGB color space.
+        label:
+        The label is a dictionary with the following keys:
+        - 'background': a dictionary of the background color, either {'RGB': (r, g, b)} or {'BGR': (b, g, r)}
+            Note that the edge color and object color should be (255, 255, 255) - background color
+        - 'edges': a list of edges, each edge is a list of segments, each segment is a tuple of (x1, y1, x2, y2)
+        - 'edge width': the width of the edge, if using the default value, it will be 1
+        - 'objects': a list of objects, each object is a dictionary with the following keys:
+            - 'id': the id of the object
+            - 'type': the type of the object, 'rectangle' in this case
+            - 'color': the color of the object, (0,0,0) or (255,255,255) in this case
+            - 'position': the position of the object, (center_x, center_y)
+            - 'vertex': the vertices of the object, list of tupes, each tuple is (x, y)
+            - 'radius': the radius of the object, None in this case
+        '''
         height, width = size
         image = np.zeros((height, width, 3), dtype=np.uint8)
         label = {
@@ -63,7 +91,10 @@ class DynamicSampler:
                 'color': (255, 255, 255),
                 'position': (cx, cy),
                 'vertex': [(x1, y1), (x2, y1), (x2, y2), (x1, y2)],
-                'radius': None
+                'radius': None,
+                'relative_position': 'TODO'
             })
 
         return image, label
+
+    
