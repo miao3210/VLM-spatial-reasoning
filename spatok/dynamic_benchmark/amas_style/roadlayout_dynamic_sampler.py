@@ -5,6 +5,7 @@ import cv2
 import matplotlib.pyplot as plt
 import matplotlib.patches as patches
 from spatok.dynamic_benchmark.utils.roadlayout_utils import *
+from spatok.dynamic_benchmark.utils.roadlayout_label_utils import *
 
 class RoadLayoutDynamicSampler:
     def __init__(self, image_size_range=[(256, 256), (512, 512), (1024, 1024)],
@@ -202,13 +203,15 @@ class RoadLayoutDynamicSampler:
                                         right_ramp_type=right_ramp_type if 'right_ramp_type' in locals() else None,
                                         index=index)    
 
-    def _get_label(self, TODO):
+    def _get_label(self, index, label_group='base'):
         '''
         Una please help
         get the relative position of each pair of objects and edges
         some old functions may be useful and they are in the utils/label_utils.py
         '''
-        TODO 
+        xodr_path = f'{self.path}/road_layout_{index}.xodr'
+        road_info = get_road_info_from_xodr(xodr_path)
+        return None
 
 
     def _sample_image(self, size, index=0):
@@ -247,6 +250,8 @@ class RoadLayoutDynamicSampler:
         image = cv2.cvtColor(resized, cv2.COLOR_BGR2RGB)
         cv2.imwrite(f'{self.path}/road_layout_{index}_0.png', image)
 
+        todolabel = self._get_label(index, label_group='base')
+
         # base_label = self._get_label(TODO, 'base')
         base_label = {
             'category': None,
@@ -273,8 +278,7 @@ class RoadLayoutDynamicSampler:
                     'position': None,
                     'area': None,
                     'vertices': None,  # List of tuples representing the vertices of the road
-                    'edges': {
-                        [
+                    'edges': [
                             {
                                 'id': None,  # The id of the lanes (if inside the road) or lane (if road edge)
                                 'type': None,  # e.g. 'solid yellow', 'dash yellow', 'solid white', 'dash white', 'road edge', 'curb', 'parking lot'
@@ -283,9 +287,8 @@ class RoadLayoutDynamicSampler:
                                 'vertices': None,  # List of tuples representing the vertices of the edge
                                 'color': None,  # The color of the edge, e.g. (255, 255, 255) for white
                                 'relative_position': None,  # the relative position in this road, e.g. 'left', 'right', 'up', 'down', 'upper_left', 'upper_right', 'lower_left', 'lower_right'
-                            }
-                        ]
-                    },
+                            },
+                    ],
                     'connections_with_side': [
                         {
                             'side': None,  # e.g. 'up', 'down', 'left', 'right', 'upper_left', 'upper_right', 'lower_left', 'lower_right'
