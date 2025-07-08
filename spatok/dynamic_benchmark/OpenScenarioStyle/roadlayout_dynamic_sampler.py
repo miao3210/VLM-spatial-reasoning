@@ -220,16 +220,8 @@ class RoadLayoutDynamicSampler:
         
         label:
         The label is a dictionary with the following keys:
-        - 'road type': single road, double road, intersection, interchange, etc.
-        - 'number of roads': 
-        - 'edge width': the width of the edge, if using the default value, it will be 1
-        - 'objects': a list of objects, each object is a dictionary with the following keys:
-            - 'id': the id of the object
-            - 'type': the type of the object, 'rectangle' in this case
-            - 'color': the color of the object, (0,0,0) or (255,255,255) in this case
-            - 'position': the position of the object, (center_x, center_y)
-            - 'vertex': the vertices of the object, list of tupes, each tuple is (x, y)
-            - 'radius': the radius of the object, None in this case
+        Una, please help me check if the labels I listed below in the function are reasonable and complete. If not, please modify it as you like.
+        Once you finish the _get_label, please fill in the arg description here
         '''
 
         height, width = size
@@ -255,6 +247,7 @@ class RoadLayoutDynamicSampler:
         image = cv2.cvtColor(resized, cv2.COLOR_BGR2RGB)
         cv2.imwrite(f'{self.path}/road_layout_{index}_0.png', image)
 
+        # base_label = self._get_label(TODO, 'base')
         base_label = {
             'category': None,
             'road_type': None,
@@ -266,6 +259,8 @@ class RoadLayoutDynamicSampler:
             'left_ramp_type': None, 
             'right_ramp_type': None, 
         }
+
+        # advanced_label = self._get_label(TODO, 'advanced')
         advanced_label = {
             'roads': [
                 {
@@ -275,17 +270,42 @@ class RoadLayoutDynamicSampler:
                     'orientation': None,
                     'curvature': None,
                     'length': None,
+                    'position': None,
+                    'area': None,
+                    'vertices': None,  # List of tuples representing the vertices of the road
+                    'edges': {
+                        [
+                            {
+                                'id': None,  # The id of the lanes (if inside the road) or lane (if road edge)
+                                'type': None,  # e.g. 'solid yellow', 'dash yellow', 'solid white', 'dash white', 'road edge', 'curb', 'parking lot'
+                                'geometry': 'line', # e.g. 'line', 'curve', 'arc'
+                                'width': None,  # The width of the edge, e.g. 1
+                                'vertices': None,  # List of tuples representing the vertices of the edge
+                                'color': None,  # The color of the edge, e.g. (255, 255, 255) for white
+                                'relative_position': None,  # the relative position in this road, e.g. 'left', 'right', 'up', 'down', 'upper_left', 'upper_right', 'lower_left', 'lower_right'
+                            }
+                        ]
+                    },
                     'connections_with_side': [
                         {
                             'side': None,  # e.g. 'up', 'down', 'left', 'right', 'upper_left', 'upper_right', 'lower_left', 'lower_right'
                             'road_id': None,  # The id of the connected road
                             'lane_id_pair': {},  # The id of the connected lane, e.g. {1:-1, 2:-2} means the lane with id 1 on the current road is connected to the lane with id -1 on the connected road, and the lane with id 2 on the current road is connected to the lane with id -2 on the connected road
                             'ramp_type': None,  # e.g. 'on-ramp', 'off-ramp'
-                            'relationship': None  # e.g. 'left', 'right', 'straight'
+                            'relationship': None,  # e.g. 'left', 'right', 'straight'
                         },
                     ]
                 },
             ],
+            'junctions': [
+                {
+                    'id': None,
+                    'connected_roads': [],  # List of road ids connected to this junction
+                    'position': None,
+                    'vertices': None,  # List of tuples representing the vertices of the junction
+                    'radius': None, # the width or length of the junction, e.g. 10, or both, e.g. (20,20)
+                },
+            ]
         }
         label = {**base_label, **advanced_label}
 
