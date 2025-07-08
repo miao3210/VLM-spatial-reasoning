@@ -1,10 +1,9 @@
-Metadata-Version: 2.1
+Metadata-Version: 2.4
 Name: spatok
 Version: 0.1
-Summary: UNKNOWN
-License: UNKNOWN
-Platform: UNKNOWN
 Requires-Python: >=3.8
-
-UNKNOWN
-
+Requires-Dist: numpy
+Requires-Dist: tqdm
+Requires-Dist: matplotlib
+Dynamic: requires-dist
+Dynamic: requires-python

@@ -1,0 +1,9 @@
+esmini GIT REV: 1d32c34
+esmini GIT TAG: v2.31.10
+esmini GIT BRANCH: tags/v2.31.10
+esmini BUILD VERSION: 3350
+Generated seed 4010648577
+Loading ./test/./scenario.xosc (v1.2)
+0 variables
+No OpenDRIVE file specified, continue without
+Exception: Couldn't locate catalog file: VehicleCatalog. Internal error occurred

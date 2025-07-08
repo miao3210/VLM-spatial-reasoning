@@ -1,0 +1,10 @@
+esmini GIT REV: N/A
+esmini GIT TAG: N/A
+esmini GIT BRANCH: N/A
+esmini BUILD VERSION: 3884
+No fixed timestep specified - running in realtime speed
+Generated seed 3120905026
+Loading /home/miao/avtesting/LLM-NHTSA/xodr_xosc_catalog/xosc_versionJul02/./5161.xosc (v1.2)
+0 variables
+Failed to find OpenDRIVE file ./generation/5161/road.xodr
+Closing
