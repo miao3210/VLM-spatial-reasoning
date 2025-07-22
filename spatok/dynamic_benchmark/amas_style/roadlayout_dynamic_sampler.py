@@ -203,15 +203,6 @@ class RoadLayoutDynamicSampler:
                                         right_ramp_type=right_ramp_type if 'right_ramp_type' in locals() else None,
                                         index=index)    
 
-    def _get_label(self, index, label_group='base'):
-        '''
-        Una please help
-        get the relative position of each pair of objects and edges
-        some old functions may be useful and they are in the utils/label_utils.py
-        '''
-        xodr_path = f'{self.path}/road_layout_{index}.xodr'
-        road_info = get_road_info_from_xodr(xodr_path)
-        return None
 
 
     def _sample_image(self, size, index=0):
@@ -250,7 +241,8 @@ class RoadLayoutDynamicSampler:
         image = cv2.cvtColor(resized, cv2.COLOR_BGR2RGB)
         cv2.imwrite(f'{self.path}/road_layout_{index}_0.png', image)
 
-        todolabel = self._get_label(index, label_group='base')
+        #todolabel = self._get_label(index, label_group='base')
+        todolabel = self._get_label(path, label_group='base')
 
         # base_label = self._get_label(TODO, 'base')
         base_label = {
@@ -319,5 +311,41 @@ class RoadLayoutDynamicSampler:
         # augmented_base = #TODO
 
         return image, label
+
+
+    def _get_label(self, xodr_path, label_group='base'):
+        """
+        Generate label by parsing the existing .xodr layout file.
+
+        Args:
+            xodr_path (str): path to the .xodr layout file.
+            label_group (str): 'base' or 'advanced'.
+
+        Returns:
+            dict: structured label data
+        """
+        road_info = get_road_info_from_xodr(xodr_path)
+
+        base_label = {
+            'category': road_info.get('category'),
+            'road_type': road_info.get('road_type'),
+            'num_roads': road_info.get('num_roads'),
+            'num_lanes': road_info.get('num_lanes'),
+            'road_length': road_info.get('road_length'),
+            'angles': road_info.get('angles'),
+            'curvature': road_info.get('curvature'),
+            'left_ramp_type': road_info.get('left_ramp_type'),
+            'right_ramp_type': road_info.get('right_ramp_type'),
+        }
+        if label_group == 'base':
+
+            return base_label
+
+        roads_data = road_info.get('roads', [])
+        junctions_data = road_info.get('junctions', [])
+
+        return {**base_label, 'roads': roads_data, 'junctions': junctions_data}
+
+
 
     

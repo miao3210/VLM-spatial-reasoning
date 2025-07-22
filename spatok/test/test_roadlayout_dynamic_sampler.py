@@ -20,5 +20,26 @@ def run_test():
     print("Sampled Label:\n")
     print(json.dumps(label, indent=2))
 
+
+########################### New #################################
+
+
+def test_get_label_structure():
+    sampler = RoadLayoutSampler()  # or however it's constructed
+    label = sampler._get_label(path, label_group='base') 
+
+    # Check top-level keys
+    assert 'category' in label
+    assert 'roads' in label
+    assert 'junctions' in label
+    assert isinstance(label['roads'], list)
+    assert isinstance(label['junctions'], list)
+
+
+
+
+
+#######################################################################
+
 if __name__ == "__main__":
     run_test()
