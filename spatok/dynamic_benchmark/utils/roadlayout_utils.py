@@ -536,7 +536,7 @@ def visualize_road(current_file_path):
     if sys.platform.startswith("linux"):
         executable = "esmini_linux"
     else:
-        executable = "exmini_mac"
+        executable = "esmini_mac"
     os.system(f"{os.path.join(os.path.dirname(__file__), f'../../../{executable}/bin/odrplot')} \
                 {os.path.splitext(current_file_path)[0]+'.xodr'} \
                 {os.path.splitext(current_file_path)[0]+'.csv'}")
@@ -573,6 +573,6 @@ if __name__ == "__main__":
     )
     # Visualize the generated road
     road.write_xml(path, prettyprint=True)
-
-
     visualize_road(path)
+
+

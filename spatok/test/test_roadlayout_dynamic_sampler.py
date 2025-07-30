@@ -1,5 +1,5 @@
-from spatok.dynamic_benchmark import RoadLayoutDynamicSampler
 
+from spatok.dynamic_benchmark.amas_style.roadlayout_dynamic_sampler import RoadLayoutDynamicSampler
 
 import matplotlib.pyplot as plt
 import cv2
@@ -25,8 +25,16 @@ def run_test():
 
 
 def test_get_label_structure():
-    sampler = RoadLayoutSampler()  # or however it's constructed
-    label = sampler._get_label(path, label_group='base') 
+    sampler = RoadLayoutDynamicSampler()  
+
+
+    # Generate one sample to get a valid .xodr path
+    _ = sampler.sample(1)  # Generates image and label
+    xodr_path = "road_layout_0.xodr"    # use the local path
+    label = sampler._get_label(xodr_path, label_group='base')
+
+    #label = sampler._get_label(path, label_group='base') 
+
 
     # Check top-level keys
     assert 'category' in label
@@ -34,10 +42,6 @@ def test_get_label_structure():
     assert 'junctions' in label
     assert isinstance(label['roads'], list)
     assert isinstance(label['junctions'], list)
-
-
-
-
 
 #######################################################################
 
