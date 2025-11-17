@@ -412,22 +412,22 @@ def plot_road(csv_file_path, image_file_path=None):
 
     # plot road ref line segments
     for i in range(len(ref_x)):
-        plt.plot(ref_x[i], ref_y[i], linewidth=2.0, color='white')
+        plt.plot(ref_x[i], ref_y[i], linewidth=2.0, color='orange')
 
     # plot driving lanes in white
     for i in range(len(lane_x)):
         width = 2.0 if lane_type_flags[i] == '-' else 1.0
         if lane_type_flags[i] == '-':
             dash_controller = {}
-            line_color = 'white'
+            line_color = 'orange'
         else:
             dash_controller = {'dashes': [20, 40]}
-            line_color = 'orange'
+            line_color = 'white'
         plt.plot(lane_x[i], lane_y[i], linewidth=width, color=line_color, linestyle=lane_type_flags[i], **dash_controller)
 
     # plot border lanes in gray
     for i in range(len(border_x)):
-        plt.plot(border_x[i], border_y[i], linewidth=3.0, color='white')
+        plt.plot(border_x[i], border_y[i], linewidth=3.0, color='gray')
 
     # plot red dots indicating lane dections
     # for i in range(len(lane_section_dots_x)):
