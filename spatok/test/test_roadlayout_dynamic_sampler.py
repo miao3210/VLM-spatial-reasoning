@@ -11,8 +11,8 @@ def run_test():
     image, label = samples[0]
 
     # Show image
-    # plt.imshow(cv2.cvtColor(image, cv2.COLOR_BGR2RGB))
-    plt.imshow(image)
+    plt.imshow(cv2.cvtColor(image, cv2.COLOR_BGR2RGB))
+    # plt.imshow(image)
     plt.title("Sampled Layout")
     plt.axis("off")
     plt.show()

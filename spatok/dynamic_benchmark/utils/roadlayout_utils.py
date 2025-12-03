@@ -414,16 +414,14 @@ def plot_road(csv_file_path, image_file_path=None):
     for i in range(len(ref_x)):
         plt.plot(ref_x[i], ref_y[i], linewidth=2.0, color='orange')
 
-    # plot driving lanes in white
+    # plot driving lanes - all white (solid edges and dashed dividers)
     for i in range(len(lane_x)):
         width = 2.0 if lane_type_flags[i] == '-' else 1.0
         if lane_type_flags[i] == '-':
             dash_controller = {}
-            line_color = 'orange'
         else:
             dash_controller = {'dashes': [20, 40]}
-            line_color = 'white'
-        plt.plot(lane_x[i], lane_y[i], linewidth=width, color=line_color, linestyle=lane_type_flags[i], **dash_controller)
+        plt.plot(lane_x[i], lane_y[i], linewidth=width, color='white', linestyle=lane_type_flags[i], **dash_controller)
 
     # plot border lanes in gray
     for i in range(len(border_x)):
@@ -434,7 +432,7 @@ def plot_road(csv_file_path, image_file_path=None):
     #     plt.plot(lane_section_dots_x[i], lane_section_dots_y[i], 'o', ms=4.0, color='#BB5555')
 
     # for i in range(len(road_start_dots_x)):
-        # plot a yellow dot at start of each road
+        # plot a orange dot at start of each road
         # plt.plot(road_start_dots_x[i], road_start_dots_y[i], 'o', ms=5.0, color='#BBBB33')
         # and an arrow indicating road direction
         # plt.arrow(road_start_dots_x[i], road_start_dots_y[i], arrow_dx[i], arrow_dy[i], width=0.1, head_width=1.0, color='#BB5555')

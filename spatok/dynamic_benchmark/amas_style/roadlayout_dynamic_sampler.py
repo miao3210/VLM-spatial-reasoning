@@ -14,7 +14,7 @@ class RoadLayoutDynamicSampler:
                  road_length_range=[20, 50, 100, 200, 300],
                  rotation_range=[k for k in range(0, 360, 15)],  # Degrees
                  object_size_range=[(20, 30), (30, 40), (40, 50)],
-                 path='/data/miao/spatok_curation/road_layout/'):
+                 path='.'): # '/data/miao/spatok_curation/road_layout/'
         self.image_size_range = image_size_range
         self.num_roads_range = num_roads_range
         self.num_lanes_range = num_lanes_range
@@ -238,7 +238,7 @@ class RoadLayoutDynamicSampler:
         resized = cv2.resize(rotated, (width, height), interpolation=cv2.INTER_AREA)
 
         # Convert to RGB and save
-        image = cv2.cvtColor(resized, cv2.COLOR_BGR2RGB)
+        image = resized # image = cv2.cvtColor(resized, cv2.COLOR_BGR2RGB)
         cv2.imwrite(f'{self.path}/road_layout_{index}_0.png', image)
 
         #todolabel = self._get_label(index, label_group='base')
