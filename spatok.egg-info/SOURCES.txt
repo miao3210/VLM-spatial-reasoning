@@ -7,5 +7,10 @@ spatok.egg-info/requires.txt
 spatok.egg-info/top_level.txt
 spatok/dynamic_benchmark/__init__.py
 spatok/dynamic_benchmark/utils/__init__.py
+spatok/dynamic_benchmark/utils/basic_math_utils.py
+spatok/dynamic_benchmark/utils/file_utils.py
 spatok/dynamic_benchmark/utils/label_utils.py
+spatok/dynamic_benchmark/utils/region_utils.py
+spatok/dynamic_benchmark/utils/roadlayout_label_utils.py
 spatok/dynamic_benchmark/utils/roadlayout_utils.py
+spatok/dynamic_benchmark/utils/seg_match_and_redundancy_utils.py
