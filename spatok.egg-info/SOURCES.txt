@@ -6,6 +6,7 @@ spatok.egg-info/dependency_links.txt
 spatok.egg-info/requires.txt
 spatok.egg-info/top_level.txt
 spatok/dynamic_benchmark/__init__.py
+spatok/dynamic_benchmark/roadlayout_dynamic_sampler.py
 spatok/dynamic_benchmark/utils/__init__.py
 spatok/dynamic_benchmark/utils/basic_math_utils.py
 spatok/dynamic_benchmark/utils/file_utils.py

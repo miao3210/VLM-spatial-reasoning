@@ -93,6 +93,9 @@ def xodr_to_dict(root):
                     spiral = geometry.find('spiral')
                     curvStart = float(spiral.get('curvStart'))
                     curvEnd = float(spiral.get('curvEnd'))
+                    # add curvature info to the geometry dict
+                    geometry_dict['curvStart'] = curvStart
+                    geometry_dict['curvEnd'] = curvEnd
                     # Approximate the centerline radius as the inverse of curvature (average curvature for simplicity)
                     centerline_radius.append( (curvStart + curvEnd) / 2 )
                 road_length.append( geometry_dict['length'] )

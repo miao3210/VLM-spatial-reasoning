@@ -1,14 +1,16 @@
-# Python
+# Byte-compiled / Python
 __pycache__/
 *.py[cod]
 *$py.class
 *.so
 .Python
-*.egg-info/
-dist/
-build/
 
-# Virtual environments
+# Distribution / Packaging
+build/
+dist/
+*.egg-info/
+
+# Virtual Environments
 venv/
 env/
 ENV/
@@ -19,13 +21,13 @@ ENV/
 *.swp
 *.swo
 
-# API Keys and Secrets
+# API Keys / Secrets
 .env
 *.key
 *.pem
 .vlm_config.json
 
-# Model cache
+# Model Cache
 *.safetensors
 *.bin
 *.onnx
@@ -44,3 +46,12 @@ logs/
 # OS
 .DS_Store
 Thumbs.db
+
+# Platform-specific Binaries
+esmini_*/
+
+# Output
+output/
+
+# Jupyter notebook
+*.ipynb

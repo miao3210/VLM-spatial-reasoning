@@ -1,3 +1,4 @@
+import os
 import warnings
 import random
 import numpy as np
@@ -14,7 +15,7 @@ class RoadLayoutDynamicSampler:
                  road_length_range=[20, 50, 100, 200, 300],
                  rotation_range=[k for k in range(0, 360, 15)],  # Degrees
                  object_size_range=[(20, 30), (30, 40), (40, 50)],
-                 path='.'): # '/data/miao/spatok_curation/road_layout/'
+                 path=os.path.join(os.getcwd(), 'output')):
         self.image_size_range = image_size_range
         self.num_roads_range = num_roads_range
         self.num_lanes_range = num_lanes_range
@@ -246,15 +247,15 @@ class RoadLayoutDynamicSampler:
 
         # base_label = self._get_label(TODO, 'base')
         base_label = {
-            'category': None,
-            'road_type': None,
-            'num_roads': None,
-            'num_lanes': None, 
-            'road_length': None, 
-            'angles': None, 
-            'curvature': None, 
-            'left_ramp_type': None, 
-            'right_ramp_type': None, 
+            'category': category,
+            'road_type': road_type,
+            'num_roads': num_roads,
+            'num_lanes': num_lanes,
+            'road_length': road_length,
+            'angles': angles,
+            'curvature': curvature,
+            'left_ramp_type': left_ramp_type,
+            'right_ramp_type': right_ramp_type,
         }
 
         # advanced_label = self._get_label(TODO, 'advanced')
